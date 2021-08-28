@@ -1,7 +1,8 @@
 import test from 'ava';
-import main from './index.js';
+import * as helpString from './index.js';
 
-test('main()', (t) => {
-	t.is(main('hello'), true);
-	t.is(main(223), false);
+test('startsWith()', (t) => {
+	t.true(helpString.startsWith('abc', 'a'));
+	t.false(helpString.startsWith('abc', 'b'));
+	t.true(helpString.startsWith('abc', 'b', 1));
 });

@@ -1,14 +1,14 @@
-# pkg-template
-> Small js package I use to help me to create npm packages
+# help-string
+> Small js package I use to help me to dealing with strings
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
-[![GitHub workflow status](https://img.shields.io/github/workflow/status/pnxdxt/package-template/CI)](https://github.com/pnxdxt/package-template)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/pkg-template)](https://bundlephobia.com/package/pkg-template)
-[![npm downloads](https://img.shields.io/npm/dt/pkg-template)](https://www.npmjs.com/package/pkg-template)
+[![GitHub workflow status](https://img.shields.io/github/workflow/status/pnxdxt/help-string/CI)](https://github.com/pnxdxt/help-string)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/help-string)](https://bundlephobia.com/package/help-string)
+[![npm downloads](https://img.shields.io/npm/dt/help-string)](https://www.npmjs.com/package/help-string)
 
 ## Install
 ```
-$ npm install pkg-template
+$ npm install help-string
 ```
 ## Import
 
@@ -18,10 +18,10 @@ Use `import foo from 'foo'` instead of `const foo = require('foo')` to import th
 
 ```js
 // Load entire build
-import * as pkgName from 'pkg-template';
+import * as helpString from 'help-string';
 
 // Load by method
-import {main} from 'pkg-template';
+import {sliceText} from 'help-string';
 ```
 If the package is used in an async context, you could use [`await import(…)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports) from CommonJS instead of `require(…)`.
 
@@ -29,17 +29,40 @@ If the package is used in an async context, you could use [`await import(…)`](
 
 Read more here: [sindresorhus/esm-package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
 
-
 ## Usage
 
 ```js
 
-main([1,2,3], (element) => typeof element === 'string');
+helpString.isMail('');
 //=> false
 
-main(['1', '2', '3'], (element) => typeof element === 'string');
+helpString.isEmpty('')
 //=> true
 ```
+
+`startsWith` : Checks if `string` starts with the given target string. 
+
+`endsWith` : Checks if `string` ends with the given target string. 
+
+`indexOf` : Find the index of a given string inside another.
+
+`isEmpty` : Check if given string is undefined, null, or zero length.
+
+`isImageUrl` : Checks if value is a valid image url. 
+
+`isMail` : Checks if value is a valid mail. 
+
+`isPhone` : Checks if value is a valid phone number. 
+
+`isUrl` : Checks if value is a valid url. 
+
+`random` : Generates a random string. 
+
+`repeat` : Repeats the given string `n` times. 
+
+`replace` : Replaces matches for `pattern` in `string` with `replacement`. 
+
+`sliceText` : Split text and keep `n` many characters. 
 
 ## License
 
