@@ -1,6 +1,5 @@
-export function startsWith(string, target, position) {
+export function startsWith(string, target, position = 0) {
 	const {length} = string;
-	position = position === null ? 0 : position;
 	if (position < 0) {
 		position = 0;
 	} else if (position > length) {
@@ -25,13 +24,13 @@ export function endsWith(string, target, position) {
 	return position >= 0 && string.slice(position, end) === target;
 }
 
-export const indexOf = (st, search, fromIndex = 0, ignoreCase = false) => {
-	if (!st) return -1;
+export const indexOf = (string, search, fromIndex = 0, ignoreCase = false) => {
+	if (!string) return -1;
 	if (ignoreCase) {
-		return st.toLowerCase().indexOf(search.toLowerCase(), fromIndex);
+		return string.toLowerCase().indexOf(search.toLowerCase(), fromIndex);
 	}
 
-	return st.indexOf(search, fromIndex);
+	return string.indexOf(search, fromIndex);
 };
 
 export const isEmpty = (s) => s === undefined || s === null || s === '';
@@ -44,22 +43,17 @@ export const isImageUrl = (url) => {
 	return false;
 };
 
-export const isMail = (value) => {
-	const expression =
-		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[(?:\d{1,3}\.){3}\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/;
-	return expression.test(String(value).toLowerCase());
-};
+const mailRegex =
+	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[(?:\d{1,3}\.){3}\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/;
 
-export const isPhone = (value) => {
-	const expression = /^(\(?\+\d+\)?[\s.-]?)?\(?\d+\)?(?:[\s.-]?\d+){2}$/;
-	return expression.test(String(value).toLowerCase());
-};
+export const isMail = (value) => mailRegex.test(String(value).toLowerCase());
 
-export const isUrl = (value) => {
-	const expression =
-		/^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%@\-/]))?$/;
-	return expression.test(String(value).toLowerCase());
-};
+const phoneRegex = /^(\(?\+\d+\)?[\s.-]?)?\(?\d+\)?(?:[\s.-]?\d+){2}$/;
+export const isPhone = (value) => phoneRegex.test(String(value).toLowerCase());
+
+const urlRegex =
+	/^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%@\-/]))?$/;
+export const isUrl = (value) => urlRegex.test(String(value).toLowerCase());
 
 export const random = (length = 10) => {
 	let text = '';
@@ -94,10 +88,8 @@ export function repeat(string, n) {
 	return result;
 }
 
-export function replace(...args) {
-	const string = `${args[0]}`;
-	return args.length < 3 ? string : string.replace(args[1], args[2]);
-}
+export const replace = (...args) =>
+	args.length < 3 ? `${args[0]}` : `${args[0]}`.replace(args[1], args[2]);
 
 export const sliceText = (text, count) =>
 	text.slice(0, count) + (text.length > count ? '...' : '');
