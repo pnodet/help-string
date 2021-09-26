@@ -33,9 +33,9 @@ export const indexOf = (string, search, fromIndex = 0, ignoreCase = false) => {
 	return string.indexOf(search, fromIndex);
 };
 
-export const isEmpty = (s) => s === undefined || s === null || s === '';
+export const isEmpty = s => s === undefined || s === null || s === '';
 
-export const isImageUrl = (url) => {
+export const isImageUrl = url => {
 	if (isUrl(url)) {
 		return url.toLowerCase().match(/\.(jpeg|jpg|gif|png)$/) !== null;
 	}
@@ -45,15 +45,14 @@ export const isImageUrl = (url) => {
 
 const mailRegex =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[(?:\d{1,3}\.){3}\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/;
-
-export const isMail = (value) => mailRegex.test(String(value).toLowerCase());
+export const isMail = value => mailRegex.test(String(value).toLowerCase());
 
 const phoneRegex = /^(\(?\+\d+\)?[\s.-]?)?\(?\d+\)?(?:[\s.-]?\d+){2}$/;
-export const isPhone = (value) => phoneRegex.test(String(value).toLowerCase());
+export const isPhone = value => phoneRegex.test(String(value).toLowerCase());
 
 const urlRegex =
 	/^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%@\-/]))?$/;
-export const isUrl = (value) => urlRegex.test(String(value).toLowerCase());
+export const isUrl = value => urlRegex.test(String(value).toLowerCase());
 
 export const random = (length = 10) => {
 	let text = '';
